@@ -1,0 +1,5 @@
+@import '../../../css/utils';
+
+.logout {
+  @include first-level-comp();
+}

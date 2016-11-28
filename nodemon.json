@@ -1,0 +1,8 @@
+{
+  "watch": [
+    "server/**/*.js",
+    "server/**/*.json",
+    "common/js/**/*.js",
+    "common/layouts/server.html"
+  ]
+}

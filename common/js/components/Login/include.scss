@@ -1,0 +1,10 @@
+@import '../../../css/utils';
+
+.login {
+  @include first-level-comp();
+}
+
+.checkbox {
+  display: none;
+  margin-top: 16px;
+}

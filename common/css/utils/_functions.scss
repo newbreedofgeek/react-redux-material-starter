@@ -1,0 +1,7 @@
+// Sass mixins/functions here.
+
+@mixin first-level-comp() {
+  position: absolute;
+  width: 100%;
+  padding: 0 15px;
+}
