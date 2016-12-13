@@ -6,13 +6,13 @@ const StationsRoute = {
   component: UserIsAuthenticated(StationsContainer)
 };
 
-// const ClinicsRoute = {
+// const StationsRoute = {
 //   path: '/stations',
-//   component: UserIsAuthenticated(ClinicsContainer),
+//   component: UserIsAuthenticated(StationsContainer),
 //   childRoutes: [
 //     {
 //       path: ':id',
-//       component: ClinicContainer
+//       component: StationContainer
 //     },
 //   ]
 // };
