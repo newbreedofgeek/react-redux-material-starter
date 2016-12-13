@@ -1,14 +1,14 @@
 {
-  "name": "galen",
-  "description": "A universal starter kit built with ES2015, react, react-router and redux. Server rendering with react and express. Bundled with Webpack with HMR transforms and css-modules support.",
-  "version": "2.1.2",
+  "name": "react-redux-material-starter",
+  "description": "A starter kit for isomorphic web development using React, Redux and Material UI.",
+  "version": "0.0.1",
   "license": "MIT",
   "main": "client/index.js",
   "config": {
     "css": "[name]__[local]__[hash:base64:5]"
   },
   "repository": {
-    "url": "https://github.com/Life-Letters/galen"
+    "url": "https://github.com/newbreedofgeek/react-redux-material-starter"
   },
   "engines": {
     "node": "6.2.1",
