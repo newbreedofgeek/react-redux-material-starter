@@ -3,3 +3,11 @@
 .home {
   @include first-level-comp();
 }
+
+.holder {
+  padding: 50px;
+  color: #a2a0a0 !important;
+  width: 70% !important;
+  margin: auto;
+  margin-top: 100px;
+}

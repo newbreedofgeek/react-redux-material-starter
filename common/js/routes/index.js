@@ -2,8 +2,10 @@
 
 import App from 'containers/App';
 import HomeRoute from './home';
+import StationsRoute from './stations';
+import StationRoute from './station';
 import TrainsRoute from './trains';
-import UsersRoute from './users';
+import TrainRoute from './train';
 import LoginRoute from './login';
 
 const Routes = [
@@ -13,8 +15,10 @@ const Routes = [
     indexRoute: HomeRoute,
     childRoutes: [
       LoginRoute,
+      StationsRoute,
+      StationRoute,
       TrainsRoute,
-      UsersRoute,
+      TrainRoute
     ]
   }
 ];

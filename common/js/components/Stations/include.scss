@@ -1,10 +1,10 @@
 @import '../../../css/utils';
 
-.trains {
+.stations {
   @include first-level-comp();
 }
 
-.newTrain {
+.newStation {
   position: absolute;
   right: 100px;
   top: 10px;

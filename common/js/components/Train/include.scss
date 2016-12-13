@@ -1,0 +1,11 @@
+@import '../../../css/utils';
+
+.train {
+  @include first-level-comp();
+  padding-bottom: 50px;
+}
+
+.gap {
+  display: inline-block;
+  width: 10px;
+}

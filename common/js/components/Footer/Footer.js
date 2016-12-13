@@ -9,16 +9,16 @@ const homeIcon = <FontIcon className="material-icons">home</FontIcon>;
 const ejectIcon = <FontIcon className="material-icons">eject</FontIcon>;
 
 class Footer extends Component {
-  select = (index) => {
-    switch(index) {
-      case 0:
-        browserHistory.push('/');
-      break;
-      case 1:
-        browserHistory.push('/logout');
-      break;
-    }
-  }
+  // select = (index) => {
+  //   switch(index) {
+  //     case 0:
+  //       browserHistory.push('/');
+  //     break;
+  //     case 1:
+  //       browserHistory.push('/logout');
+  //     break;
+  //   }
+  // }
 
   render() {
     return (
@@ -27,11 +27,11 @@ class Footer extends Component {
           <BottomNavigationItem
             label="Home"
             icon={homeIcon}
-            onTouchTap={() => this.select(0)}
+            onTouchTap={ () => { browserHistory.push('/'); } }
           />
           <BottomNavigationItem label="Logout"
             icon={ejectIcon}
-            onTouchTap={() => this.select(1)}
+            onTouchTap={ () => { this.props.logout(); } }
           />
         </BottomNavigation>
       </Paper>
@@ -40,3 +40,16 @@ class Footer extends Component {
 }
 
 export default Footer;
+
+
+//
+// const Footer = () => (
+//   <footer className={css.bgColor}>
+//     <Link to="/">Home</Link>
+//     <Link to="/stations">Stations</Link>
+//     <Link to="/trains">Trains</Link>
+//     <Link to="/logout">Logout</Link>
+//   </footer>
+// );
+//
+// export default Footer;

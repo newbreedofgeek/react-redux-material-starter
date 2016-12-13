@@ -3,8 +3,8 @@ import App from '../components/App';
 import { logout } from '../actions/user';
 
 const mapStateToProps = (state) => ({
-  trains: {
-    ...state.trains
+  stations: {
+    ...state.stations
   }
 });
 

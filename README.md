@@ -11,7 +11,7 @@ npm install -g yarn
 
 Then:
 ```
-yarn install
+yarn
 yarn start
 ```
 

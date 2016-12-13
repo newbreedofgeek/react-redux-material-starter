@@ -7,64 +7,49 @@ import RaisedButton from 'material-ui/RaisedButton';
 import CircularProgress from 'material-ui/CircularProgress';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
-import Divider from 'material-ui/Divider';
 import { Link, browserHistory } from 'React-Router';
+import Divider from 'material-ui/Divider';
 import css from './include.scss';
 
-export default class TrainsComponent extends Component {
+export default class StationsComponent extends Component {
   static contextTypes = {
     router: PropTypes.object,
   };
 
   componentDidMount() {
-    const { getTrains } = this.props;
-    this.props.getTrains();
+    const { getStations } = this.props;
+    this.props.getStations();
   }
 
   render() {
-    const { trains, train, station, location, params } = this.props;
-    const { id: stationId } = params;
+    const { stations, station, location, params } = this.props;
 
     return (
-      <div className={css.trains}>
-        <h2>Trains of {station.name}</h2>
+      <div className={css.stations}>
+        <h2>Stations</h2>
 
-        <div className={css.newTrain}>
-          <FloatingActionButton onTouchTap={ () => { this.context.router.push('/stations/' + stationId + '/trains/add'); }} >
+        <div className={css.newStation}>
+          <FloatingActionButton onTouchTap={ () => { this.context.router.push('/stations/add'); }} >
             <ContentAdd />
           </FloatingActionButton>
         </div>
 
-        <RaisedButton
-          label="Back to Station"
-          secondary={ true }
-          onTouchTap={ () => { this.context.router.push('/stations/' + stationId); } }
-        />
-
-        <br/><br/>
-
-        <Divider />
-
-        <br/>
-
         {
-          trains && trains.length > 0
+          stations && stations.length > 0
           ?
-            <Table onRowSelection={(r) => this.context.router.push('/stations/' + stationId + '/trains/' + this.props.trains[r[0]].id)}>
+            <Table onRowSelection={(r) => this.context.router.push('/stations/' + this.props.stations[r[0]].id)}>
               <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                 <TableRow>
                   <TableHeaderColumn>ID</TableHeaderColumn>
-                  <TableHeaderColumn>Train Name</TableHeaderColumn>
-                  <TableHeaderColumn>Role</TableHeaderColumn>
+                  <TableHeaderColumn>Station Name</TableHeaderColumn>
                 </TableRow>
               </TableHeader>
               <TableBody displayRowCheckbox={false} showRowHover={true}>
               {
-                trains.map((train, index) => {
+                stations.map((station, index) => {
                   return <TableRow key={index}>
-                    <TableRowColumn>{ train.id }</TableRowColumn>
-                    <TableRowColumn>{ train.name }</TableRowColumn>
-                    <TableRowColumn>{ train.role }</TableRowColumn>
+                    <TableRowColumn>{ station.id }</TableRowColumn>
+                    <TableRowColumn>{ station.name }</TableRowColumn>
                   </TableRow>;
                 })
               }
@@ -77,3 +62,25 @@ export default class TrainsComponent extends Component {
     );
   }
 }
+
+// <Link to="/stations/ass">Home</Link>
+//
+// <pre>{JSON.stringify(stations, null, 2)}</pre>
+// <pre>{JSON.stringify(station, null, 2)}</pre>
+// <pre>{JSON.stringify(params, null, 2)}</pre>
+
+// <div className={css.stations}>
+//   <h2>Stations</h2>
+//   <p>
+//     Reducer state passed to props:
+//   </p>
+//   <pre>{JSON.stringify(example, null, 2)}</pre>
+//   <p>
+//     Router location passed to props:
+//   </p>
+//   <pre>{JSON.stringify(location, null, 2)}</pre>
+//   <p>
+//     Router params passed to props:
+//   </p>
+//   <pre>{JSON.stringify(params, null, 2)}</pre>
+// </div>

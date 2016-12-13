@@ -31,19 +31,21 @@ export default class Header extends Component {
   render() {
     return (
       <div className="nav">
-        <AppBar title="Train Control (Demo App)" onLeftIconButtonTouchTap={this.handleToggle}  />
+        <AppBar title="Station Manager" onLeftIconButtonTouchTap={this.handleToggle}  />
 
         <Drawer
           docked={false}
           open={this.state.open}
           onRequestChange={(open) => this.setState({open})}
-        >
-          <MenuItem onTouchTap={this.handleClose} primaryText="Home" containerElement={<Link to="/" />} />
-          <MenuItem onTouchTap={this.handleClose} primaryText="Trains" containerElement={<Link to="/trains" />} />
-          <MenuItem onTouchTap={this.handleClose} primaryText="Users" containerElement={<Link to="/users" />} />
+          >
+          <h1 className={ css.title }>Menu</h1>
+          <MenuItem onTouchTap={this.handleClose} primaryText="Home" containerElement={<Link to="/" />} className = { css.menuHolder } />
+          <MenuItem onTouchTap={this.handleClose} primaryText="Stations" containerElement={<Link to="/stations" />} />
           <MenuItem onTouchTap={this.handleLogout} primaryText="Logout" />
         </Drawer>
       </div>
     );
   }
 }
+
+// <MenuItem onTouchTap={this.handleClose} primaryText="Trains" containerElement={<Link to="/trains" />} />
