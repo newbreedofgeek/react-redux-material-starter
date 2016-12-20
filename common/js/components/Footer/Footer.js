@@ -4,37 +4,29 @@ import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNaviga
 import Paper from 'material-ui/Paper';
 import IconLocationOn from 'material-ui/svg-icons/communication/location-on';
 import { Link, browserHistory } from 'react-router';
+import css from './include.scss';
 
 const homeIcon = <FontIcon className="material-icons">home</FontIcon>;
 const ejectIcon = <FontIcon className="material-icons">eject</FontIcon>;
 
 class Footer extends Component {
-  // select = (index) => {
-  //   switch(index) {
-  //     case 0:
-  //       browserHistory.push('/');
-  //     break;
-  //     case 1:
-  //       browserHistory.push('/logout');
-  //     break;
-  //   }
-  // }
-
   render() {
     return (
-      <Paper zDepth={1}>
-        <BottomNavigation>
-          <BottomNavigationItem
-            label="Home"
-            icon={homeIcon}
-            onTouchTap={ () => { browserHistory.push('/'); } }
-          />
-          <BottomNavigationItem label="Logout"
-            icon={ejectIcon}
-            onTouchTap={ () => { this.props.logout(); } }
-          />
-        </BottomNavigation>
-      </Paper>
+      <div className={css.footer}>
+        <Paper zDepth={1}>
+          <BottomNavigation>
+            <BottomNavigationItem
+              label="Home"
+              icon={homeIcon}
+              onTouchTap={ () => { browserHistory.push('/'); } }
+            />
+            <BottomNavigationItem label="Logout"
+              icon={ejectIcon}
+              onTouchTap={ () => { this.props.logout(); } }
+            />
+          </BottomNavigation>
+        </Paper>
+      </div>
     );
   }
 }

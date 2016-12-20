@@ -1,8 +1,12 @@
 .app {
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .rootAnimate {
+  flex: auto;
+  background-color: rgba(204, 204, 204, 0.33);
   padding: 10px;
   position: relative;
   height: 100%;
