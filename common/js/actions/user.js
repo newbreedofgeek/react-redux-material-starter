@@ -8,7 +8,8 @@ export function login(formData) {
       dispatch({
           type: constants.USER_LOGGED_IN,
           payload: {
-            ...formData
+            ...formData,
+            token: '12345'
           }
         }
       );
