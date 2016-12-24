@@ -6,7 +6,7 @@ A React, Redux and Material-UI based universal starter kit for web development. 
 
 ## Get started
 
-Install (yarn)[https://github.com/yarnpkg/yarn] if you don't have it already:
+Install [yarn](https://github.com/yarnpkg/yarn) if you don't have it already:
 ```
 npm install -g yarn
 ```
