@@ -1,5 +1,7 @@
 # react-redux-material-starter
 
+![react-redux-material-starter](https://raw.githubusercontent.com/newbreedofgeek/react-redux-material-starter/master/logo.png)
+
 A React, Redux and Material-UI based universal starter kit for web development. Server rendering with react and express. Bundled with Webpack, with HMR transforms and support for `css-modules`. Supports UI Auth on react-router route level.
 
 ## Get started
