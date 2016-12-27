@@ -1,4 +1,4 @@
-# react-redux-material-starter
+# react redux material starter
 
 ![react-redux-material-starter](https://raw.githubusercontent.com/newbreedofgeek/react-redux-material-starter/master/logo.png)
 
