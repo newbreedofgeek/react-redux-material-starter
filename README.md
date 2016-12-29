@@ -17,7 +17,7 @@ yarn
 yarn start
 ```
 
-Direct your browser to `http://localhost:3000`.
+Direct your browser to `http://localhost:4000`.
 
 ## Directory Structure
 ```
@@ -62,3 +62,51 @@ component with the same name, for example:
 │   ├── Header.js
 │   ├── Header.scss
 ```
+
+## Writing Tests
+The default testing framework is Mocha and Chai, though you can use whatever you want.
+
+Tests should reside alongside the `component/module/selector/etc` and `actions/reducers/etc` that it is
+testing. For example:
+
+```
+├── reducers
+│   ├── todos.js
+│   ├── todos.test.js
+```
+
+Tests can be written with ES2015, since it passes through `babel-register`.
+
+## Running Tests
+To run a single test:
+```
+yarn test /path/to/single.test.js
+```
+
+To run a directory of tests:
+
+```
+yarn test /path/to/test/directory
+```
+
+To run all tests:
+
+```
+yarn test:all
+```
+
+This will run all files that are suffixed with a `.test.js`.
+
+To run all tests in `watch` mode:
+
+```
+yarn test:all:watch
+```
+
+## Running ESLint
+
+```
+yarn lint
+```
+
+Check the `.eslintignore` file for directories excluded from linting.
