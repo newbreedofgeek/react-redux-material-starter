@@ -4,16 +4,35 @@ import 'whatwg-fetch';
 
 export function login(formData) {
   return (dispatch) => {
-    setTimeout(() => {
-      dispatch({
-          type: constants.USER_LOGGED_IN,
-          payload: {
-            ...formData,
-            token: '12345'
+    fetch('https://private-c1cb6-stationmanager.apiary-mock.com/auth', {
+      method: 'POST',
+      headers: {
+        'cache-control': 'no-cache',
+        'Content-Type': 'application/json'
+      },
+      body: formData
+    })
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      if (data.token) {
+        dispatch({
+            type: constants.USER_LOGGED_IN,
+            payload: {
+              ...formData,
+              ...data
+            }
           }
-        }
-      );
-    }, 2000);
+        );
+      }
+      else {
+        dispatch({
+            type: constants.USER_LOG_IN_ERROR
+          }
+        );
+      }
+    });
   };
 }
 
