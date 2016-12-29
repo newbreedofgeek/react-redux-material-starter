@@ -45,7 +45,7 @@ function handleRender(req, res) {
   const finalState = store.getState();
 
   // See react-router's Server Rendering section:
-  // https://github.com/rackt/react-router/blob/master/docs/guides/advanced/ServerRendering.md
+  // https://github.com/ReactTraining/react-router/blob/master/docs/guides/ServerRendering.md
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
     if (redirectLocation) {
       res.redirect(301, redirectLocation.pathname + redirectLocation.search);

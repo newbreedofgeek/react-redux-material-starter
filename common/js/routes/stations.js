@@ -6,6 +6,8 @@ const StationsRoute = {
   component: UserIsAuthenticated(StationsContainer)
 };
 
+export default StationsRoute;
+
 // const StationsRoute = {
 //   path: '/stations',
 //   component: UserIsAuthenticated(StationsContainer),
@@ -16,5 +18,3 @@ const StationsRoute = {
 //     },
 //   ]
 // };
-
-export default StationsRoute;
