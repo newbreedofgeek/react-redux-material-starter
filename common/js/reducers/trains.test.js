@@ -117,7 +117,6 @@ describe('trains reducer', () => {
   });
 
   it('should handle TRAIN_UPDATE', () => {
-    // 1 new item
     expect(
       reducer(defaultState,
         {
@@ -164,7 +163,6 @@ describe('trains reducer', () => {
   });
 
   it('should handle TRAIN_SAVED', () => {
-    // 1 new item
     expect(
       reducer(defaultState,
         {

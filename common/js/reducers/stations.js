@@ -43,9 +43,6 @@ const stations = (state = defaultState, { type, payload }) => {
 
       return state;
 
-    case constants.STATIONS_CLEAR:
-      return state;
-
     case constants.STATION_UPDATE:
       state = [
         ...state.filter((i) => (i.id != payload[0].id)), // payload has an array of the item that updated, use that to remove it from state without mutating
@@ -53,6 +50,9 @@ const stations = (state = defaultState, { type, payload }) => {
       ];
 
       return state;
+
+    case constants.STATIONS_CLEAR:
+      return defaultState;
 
     case constants.STATION_SAVED:
       state = [
