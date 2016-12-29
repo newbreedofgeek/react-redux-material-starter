@@ -2,20 +2,23 @@ import * as constants from './constants';
 
 const defaultState = {};
 
-const train = (state = defaultState, { type, payload }) => {
+const user = (state = defaultState, { type, payload }) => {
   switch (type) {
     case constants.USER_LOGGED_IN:
-    return payload;
+      return {
+        ...payload,
+        ...state
+      };
 
     case constants.USER_LOG_IN_ERROR:
-    return {};
+      return defaultState;
 
     case constants.USER_LOGGED_OUT:
-    return {};
+      return defaultState;
 
     default:
       return state;
   }
 };
 
-export default train;
+export default user;
