@@ -10,7 +10,10 @@ export function login(formData) {
         'cache-control': 'no-cache',
         'Content-Type': 'application/json'
       },
-      body: formData
+      body: {
+        login: true,
+        ...formData
+      }
     })
     .then((res) => {
       return res.json();
@@ -37,7 +40,25 @@ export function login(formData) {
 }
 
 export function logout() {
-  return {
-    type: constants.USER_LOGGED_OUT
+  return (dispatch) => {
+    fetch('https://private-c1cb6-stationmanager.apiary-mock.com/auth', {
+      method: 'POST',
+      headers: {
+        'cache-control': 'no-cache',
+        'Content-Type': 'application/json'
+      },
+      body: {
+        logout: true
+      }
+    })
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      dispatch({
+          type: constants.USER_LOGGED_OUT
+        }
+      );
+    });
   };
 }
