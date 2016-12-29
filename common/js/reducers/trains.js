@@ -67,9 +67,6 @@ const trains = (state = defaultState, { type, payload }) => {
 
       return state;
 
-    case constants.TRAINS_CLEAR:
-      return state;
-
     case constants.TRAIN_UPDATE:
       state = [
         ...state.filter((i) => (i.id != payload[0].id)), // payload has an array of the item that updated, use that to remove it from state without mutating
@@ -77,6 +74,9 @@ const trains = (state = defaultState, { type, payload }) => {
       ];
 
       return state;
+
+    case constants.TRAINS_CLEAR:
+      return defaultState;
 
     case constants.TRAIN_SAVED:
       state = [
