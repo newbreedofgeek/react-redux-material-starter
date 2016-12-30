@@ -2,8 +2,8 @@ import * as constants from '../reducers/constants';
 import { dataToQS } from '../lib/util';
 import 'whatwg-fetch';
 
-export function getTrains() {
-  return (dispatch) => {
+export const getTrains = () => (
+  (dispatch) => {
     dispatch({
       type: constants.TRAINS_CLEAR
     });
@@ -18,12 +18,11 @@ export function getTrains() {
         payload: data
       });
     }, 2000);
-  };
-}
+  }
+);
 
-export function updateTrain(formData) {
-  return (dispatch) => {
-
+export const updateTrain = (formData) => (
+  (dispatch) => {
     setTimeout(() => {
       // this is where you ajax to the server
 
@@ -49,11 +48,11 @@ export function updateTrain(formData) {
         payload: data.newTrain // only send the new train back
       });
     }, 2000);
-  };
-}
+  }
+);
 
-export function saveTrain(formData) {
-  return (dispatch) => {
+export const saveTrain = (formData) => (
+  (dispatch) => {
     setTimeout(() => {
       // this is where you ajax to the server
 
@@ -78,5 +77,5 @@ export function saveTrain(formData) {
         payload: data.newTrain // only send the new clinc back
       });
     }, 2000);
-  };
-}
+  }
+);

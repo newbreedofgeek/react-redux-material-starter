@@ -2,8 +2,8 @@ import * as constants from '../reducers/constants';
 import { dataToQS } from '../lib/util';
 import 'whatwg-fetch';
 
-export function login(formData) {
-  return (dispatch) => {
+export const login = (formData) => (
+  (dispatch) => {
     fetch('https://private-c1cb6-stationmanager.apiary-mock.com/auth', {
       method: 'POST',
       headers: {
@@ -36,11 +36,11 @@ export function login(formData) {
         );
       }
     });
-  };
-}
+  }
+);
 
-export function logout() {
-  return (dispatch) => {
+export const logout = () => (
+  (dispatch) => {
     fetch('https://private-c1cb6-stationmanager.apiary-mock.com/auth', {
       method: 'POST',
       headers: {
@@ -60,5 +60,5 @@ export function logout() {
         }
       );
     });
-  };
-}
+  }
+);

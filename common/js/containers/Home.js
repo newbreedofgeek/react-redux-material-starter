@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Home from '../components/Home';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
   train: {}
 });
 

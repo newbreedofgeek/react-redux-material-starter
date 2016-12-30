@@ -3,9 +3,8 @@ import Stations from '../components/Stations';
 import { getStations } from '../actions/stations';
 
 const mapStateToProps = (state, ownProps) => ({
-    stations: state.stations
-  }
-);
+  stations: state.stations
+});
 
 const mapDispatchToProps = ({
   getStations

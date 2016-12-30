@@ -39,7 +39,7 @@ export default class StationsComponent extends Component {
 
     const { createNew, saveStation, updateStation, station } = this.props;
 
-    if (!createNew) {
+    if (!createNew) {      
       updateStation({
         id: station.id,
         name: this.refs.name.input.value,

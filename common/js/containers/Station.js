@@ -3,7 +3,7 @@ import Station from '../components/Station';
 import { updateStation, saveStation } from '../actions/stations';
 
 const mapStateToProps = (state, ownProps) => {
-  if (ownProps.params.id == 'add'){
+  if (ownProps.params.stationId == 'add'){
     return {
       station: {},
       createNew: true
@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => {
   }
   else {
     return {
-      station: state.stations.filter((d) => (d.id == ownProps.params.id) )[0]
+      station: state.stations.filter((d) => (d.id == ownProps.params.stationId) )[0]
     };
   }
 };

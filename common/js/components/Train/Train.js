@@ -67,7 +67,7 @@ export default class TrainComponent extends Component {
 
   render() {
     const { createNew, location, params, station } = this.props;
-    const { id: stationId } = params;
+    const { stationId } = params;
     let { train } = this.props;
 
     // hot patch required due to transisitons

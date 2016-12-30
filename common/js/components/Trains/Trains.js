@@ -23,7 +23,7 @@ export default class TrainsComponent extends Component {
 
   render() {
     const { trains, train, station, location, params } = this.props;
-    const { id: stationId } = params;
+    const { stationId } = params;
 
     return (
       <div className={css.trains}>

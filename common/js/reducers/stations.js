@@ -52,7 +52,7 @@ const stations = (state = defaultState, { type, payload }) => {
       return state;
 
     case constants.STATIONS_CLEAR:
-      return defaultState;
+      return state;
 
     case constants.STATION_SAVED:
       state = [

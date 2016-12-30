@@ -76,7 +76,7 @@ const trains = (state = defaultState, { type, payload }) => {
       return state;
 
     case constants.TRAINS_CLEAR:
-      return defaultState;
+      return state;
 
     case constants.TRAIN_SAVED:
       state = [

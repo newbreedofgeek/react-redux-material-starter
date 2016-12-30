@@ -5,14 +5,14 @@ import { updateTrain, saveTrain } from '../actions/trains';
 const mapStateToProps = (state, ownProps) => {
   if (ownProps.params.trainId == 'add'){
     return {
-      station: state.stations.filter((d) => (d.id == ownProps.params.id))[0],
+      station: state.stations.filter((d) => (d.id == ownProps.params.stationId))[0],
       train: {},
       createNew: true
     };
   }
   else {
     return {
-      station: state.stations.filter((d) => (d.id == ownProps.params.id))[0],
+      station: state.stations.filter((d) => (d.id == ownProps.params.stationId))[0],
       train: state.trains.filter(function(d) { return d.id == ownProps.params.trainId; } )[0]
     };
   }

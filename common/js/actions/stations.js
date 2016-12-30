@@ -2,8 +2,8 @@ import * as constants from '../reducers/constants';
 import { dataToQS } from '../lib/util';
 import 'whatwg-fetch';
 
-export function getStations() {
-  return (dispatch) => {
+export const getStations = () => (
+  (dispatch) => {
     dispatch({
       type: constants.STATIONS_CLEAR
     });
@@ -18,15 +18,13 @@ export function getStations() {
         payload: data
       });
     }, 2000);
-  };
-}
+  }
+);
 
-export function updateStation(formData) {
+export const updateStation = (formData) => {
   return (dispatch) => {
-
     setTimeout(() => {
       // this is where you ajax to the server
-
       const data = {
         success: true,
         newStation: [{
@@ -50,10 +48,10 @@ export function updateStation(formData) {
       });
     }, 2000);
   };
-}
+};
 
-export function saveStation(formData) {
-  return (dispatch) => {
+export const saveStation = (formData) => (
+  (dispatch) => {
     setTimeout(() => {
       // this is where you ajax to the server
 
@@ -79,5 +77,5 @@ export function saveStation(formData) {
         payload: data.newStation // only send the new clinc back
       });
     }, 2000);
-  };
-}
+  }
+);

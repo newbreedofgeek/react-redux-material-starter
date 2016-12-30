@@ -3,8 +3,8 @@ import Trains from '../components/Trains';
 import { getTrains } from '../actions/trains';
 
 const mapStateToProps = (state, ownProps) => ({
-    trains: state.trains.filter((r) => (r.stationId == ownProps.params.id)),
-    station: state.stations.filter((d) => (d.id == ownProps.params.id))[0]
+    trains: state.trains.filter((r) => (r.stationId == ownProps.params.stationId)),
+    station: state.stations.filter((d) => (d.id == ownProps.params.stationId))[0]
   }
 );
 

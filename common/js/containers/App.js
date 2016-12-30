@@ -2,15 +2,15 @@ import { connect } from 'react-redux';
 import App from '../components/App';
 import { logout } from '../actions/user';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
   stations: {
     ...state.stations
   }
 });
 
-const mapDispatchToProps = {
+const mapDispatchToProps = ({
   logout
-};
+});
 
 const AppContainer = connect(
   mapStateToProps,
