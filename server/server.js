@@ -3,7 +3,8 @@ import Express from 'express';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { Provider } from 'react-redux';
-import { RouterContext, match } from 'react-router';
+import { createMemoryHistory, RouterContext, match } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
 import routes from 'routes';
 import config from './config';
 import configureStore from 'store';
@@ -38,15 +39,18 @@ function handleRender(req, res) {
   // app's initial state.
   const initialState = { };
 
-  // Create a new Redux store instance
-  const store = configureStore(initialState);
+  // Create a new Redux store instance (using createMemoryHistory as its SSR)
+  // See how is the react-router SSR example app here https://github.com/reactjs/react-router-redux/blob/master/examples/server/server.js
+  const memoryHistory = createMemoryHistory(req.url)
+  const store = configureStore(memoryHistory, initialState);
+  const history = syncHistoryWithStore(memoryHistory, store)
 
   // Grab the initial state from our Redux store
   const finalState = store.getState();
 
   // See react-router's Server Rendering section:
   // https://github.com/ReactTraining/react-router/blob/master/docs/guides/ServerRendering.md
-  match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
+  match({ history, routes, location: req.url }, (error, redirectLocation, renderProps) => {
     if (redirectLocation) {
       res.redirect(301, redirectLocation.pathname + redirectLocation.search);
     } else if (error) {

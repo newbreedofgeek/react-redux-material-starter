@@ -2,8 +2,7 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router } from 'react-router';
-import { browserHistory } from 'react-router';
+import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import configureStore from 'store';
 import routes from 'routes';
@@ -22,7 +21,7 @@ const rootElement = document.getElementById('app');
 // Creates the Redux store based on the initial state passed down by the server
 // rendering.
 const initialState = window.__INITIAL_STATE__;
-const store = configureStore(initialState);
+const store = configureStore(browserHistory, initialState);
 const history = syncHistoryWithStore(browserHistory, store);
 
 injectTapEventPlugin();

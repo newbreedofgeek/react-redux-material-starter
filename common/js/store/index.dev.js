@@ -4,8 +4,7 @@ import rootReducer from 'reducers';
 import persistState from 'redux-localstorage';
 import DevTools from 'containers/DevTools';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import {browserHistory} from 'react-router';
-import {routerMiddleware} from 'react-router-redux';
+import { routerMiddleware } from 'react-router-redux';
 
 /* localStorage Persisted States
  * Set up persisted state properties via localStorage. They should be added
@@ -14,14 +13,13 @@ import {routerMiddleware} from 'react-router-redux';
  */
 const persistedStates = ['user'];
 
-export default function configureStore(initialState, localStorage = true) {
-  const routingMiddleware = routerMiddleware(browserHistory);
-
+export default function configureStore(history, initialState, localStorage = true) {
   /* Middleware
    * Configure this array with the middleware that you want included. thunk
    * is included by default, and react-router-redux's syncHistory is also
    * applied if an `options.history` object was passed to configureStore.
    */
+  const routingMiddleware = routerMiddleware(history);
   let middleware = [thunk, routingMiddleware];
 
   // Add universal enhancers here
@@ -43,7 +41,6 @@ export default function configureStore(initialState, localStorage = true) {
 
   // create store with enhancers, middleware, reducers, and initialState
   const store = createStore(rootReducer, initialState, composeWithDevTools(enhancer));
-  // const store = createStore(rootReducer, initialState, enhancer);
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
