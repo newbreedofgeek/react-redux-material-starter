@@ -133,7 +133,7 @@ describe('stations reducer', () => {
 
   it('should handle STATIONS_CLEAR', () => {
     expect(
-      reducer({},
+      reducer(defaultState,
         {
           type: constants.STATIONS_CLEAR
         }

@@ -153,7 +153,7 @@ describe('trains reducer', () => {
 
   it('should handle TRAINS_CLEAR', () => {
     expect(
-      reducer({},
+      reducer(defaultState,
         {
           type: constants.TRAINS_CLEAR
         }
