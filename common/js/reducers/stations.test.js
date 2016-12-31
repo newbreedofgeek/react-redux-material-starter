@@ -1,40 +1,10 @@
 import reducer from './stations';
 import * as constants from './constants';
+import * as mock from '../mock';
 import { expect } from 'chai';
 
 describe('stations reducer', () => {
-  let defaultState = [
-    {
-      id: 1,
-      name: 'Auburn',
-      address: {
-        street: 'No 284, Pitt Street',
-        suburb: 'Auburn',
-        postcode: '2000',
-        state: 'NSW'
-      },
-    },
-    {
-      id: 2,
-      name: 'Seven Hills',
-      address: {
-        street: 'No 4, blue Street',
-        suburb: 'Seven Hills',
-        postcode: '2000',
-        state: 'NSW'
-      },
-    },
-    {
-      id: 3,
-      name: 'Blacktown',
-      address: {
-        street: 'No 24, brown Street',
-        suburb: 'Blacktown',
-        postcode: '2000',
-        state: 'NSW'
-      },
-    }
-  ];
+  let defaultState = mock.stations;
 
   beforeEach(() => {});
 

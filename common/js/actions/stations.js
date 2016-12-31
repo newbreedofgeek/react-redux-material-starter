@@ -1,5 +1,4 @@
 import * as constants from '../reducers/constants';
-import { dataToQS } from '../lib/util';
 import 'whatwg-fetch';
 
 export const getStations = () => (
@@ -8,74 +7,95 @@ export const getStations = () => (
       type: constants.STATIONS_CLEAR
     });
 
-    setTimeout(() => {
-      // this is where you ajax to the server
-
-      const data = []; // your stations array
+    fetch('https://private-c1cb6-stationmanager.apiary-mock.com/stations', {
+      method: 'GET',
+      headers: {
+        'cache-control': 'no-cache',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      // data returned from the mock api server is static, so locally mock it so app works nicely
+      data = [];
 
       dispatch({
         type: constants.STATIONS_GET,
         payload: data
       });
-    }, 2000);
+    });
   }
 );
 
-export const updateStation = (formData) => {
-  return (dispatch) => {
-    setTimeout(() => {
-      // this is where you ajax to the server
-      const data = {
-        success: true,
-        newStation: [{
-          id: formData.id,
-          name: formData.name,
-          address: {
-            street: formData.address.street,
-            suburb: formData.address.suburb,
-            postcode: formData.address.postcode,
-            state: formData.address.state,
-          },
-        }]
-      };
+export const updateStation = (formData) => (
+  (dispatch) => {
+    fetch('https://private-c1cb6-stationmanager.apiary-mock.com/stations', {
+      method: 'POST',
+      headers: {
+        'cache-control': 'no-cache',
+        'Content-Type': 'application/json'
+      },
+      body: {
+        ...formData
+      }
+    })
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      // data returned from the mock api server is static, so locally mock it so app works nicely
+      data = [{
+        id: formData.id,
+        name: formData.name,
+        address: {
+          street: formData.address.street,
+          suburb: formData.address.suburb,
+          postcode: formData.address.postcode,
+          state: formData.address.state,
+        },
+      }];
 
-      // if not 'success' handle a fail case
-
-      // or if its a success
       dispatch({
         type: constants.STATION_UPDATE,
-        payload: data.newStation // only send the new clinc back
+        payload: data
       });
-    }, 2000);
-  };
-};
+    });
+  }
+);
 
 export const saveStation = (formData) => (
   (dispatch) => {
-    setTimeout(() => {
-      // this is where you ajax to the server
+    fetch('https://private-c1cb6-stationmanager.apiary-mock.com/stations', {
+      method: 'POST',
+      headers: {
+        'cache-control': 'no-cache',
+        'Content-Type': 'application/json'
+      },
+      body: {
+        ...formData
+      }
+    })
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      // data returned from the mock api server is static, so locally mock it so app works nicely
+      data = [{
+        name: formData.name,
+        address: {
+          street: formData.address.street,
+          suburb: formData.address.suburb,
+          postcode: formData.address.postcode,
+          state: formData.address.state,
+        },
+      }];
 
-      const data = {
-        success: true,
-        newStation: [{
-          id: +new Date(),
-          name: formData.name,
-          address: {
-            street: formData.address.street,
-            suburb: formData.address.suburb,
-            postcode: formData.address.postcode,
-            state: formData.address.state,
-          },
-        }]
-      };
-
-      // if not 'success' handle a fail case
-
-      // or if its a success
       dispatch({
         type: constants.STATION_SAVED,
-        payload: data.newStation // only send the new clinc back
+        payload: data
       });
-    }, 2000);
+    });
   }
 );

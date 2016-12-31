@@ -1,61 +1,7 @@
 import * as constants from './constants';
+import * as mock from '../mock';
 
-const defaultState = [
-  {
-    id: 1,
-    stationId: 1,
-    name: 'CitiRail 200',
-    role: 'Express',
-    color: 'blue',
-    speed: '50 km/h',
-    seats: 200
-  },
-  {
-    id: 2,
-    stationId: 1,
-    name: 'CitiRail 300',
-    role: 'Limited Stops',
-    color: 'blue',
-    speed: '50 km/h',
-    seats: 200
-  },
-  {
-    id: 3,
-    stationId: 2,
-    name: 'CitiRail 400',
-    role: 'Regular',
-    color: 'blue',
-    speed: '50 km/h',
-    seats: 200
-  },
-  {
-    id: 4,
-    stationId: 2,
-    name: 'CitiRail 500',
-    role: 'Limited Stops',
-    color: 'blue',
-    speed: '50 km/h',
-    seats: 200
-  },
-  {
-    id: 5,
-    stationId: 3,
-    name: 'CitiRail 600',
-    role: 'Express',
-    color: 'blue',
-    speed: '50 km/h',
-    seats: 200
-  },
-  {
-    id: 6,
-    stationId: 3,
-    name: 'CitiRail 700',
-    role: 'Limited Stops',
-    color: 'blue',
-    speed: '50 km/h',
-    seats: 200
-  }
-];
+const defaultState = mock.trains;
 
 const trains = (state = defaultState, { type, payload }) => {
   switch (type) {
@@ -79,6 +25,8 @@ const trains = (state = defaultState, { type, payload }) => {
       return state;
 
     case constants.TRAIN_SAVED:
+      payload[0].id = state.reduce((t, i) => Math.max(t, i.id), - 1) + 1; // increment sequential id
+
       state = [
         ...state,
         ...payload

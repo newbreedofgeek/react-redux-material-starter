@@ -1,5 +1,4 @@
 import * as constants from '../reducers/constants';
-import { dataToQS } from '../lib/util';
 import 'whatwg-fetch';
 
 export const login = (formData) => (

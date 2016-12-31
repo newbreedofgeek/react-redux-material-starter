@@ -1,37 +1,7 @@
 import * as constants from './constants';
+import * as mock from '../mock';
 
-const defaultState = [
-  {
-    id: 1,
-    name: 'Auburn',
-    address: {
-      street: 'No 284, Pitt Street',
-      suburb: 'Auburn',
-      postcode: '2000',
-      state: 'NSW'
-    },
-  },
-  {
-    id: 2,
-    name: 'Seven Hills',
-    address: {
-      street: 'No 4, blue Street',
-      suburb: 'Seven Hills',
-      postcode: '2000',
-      state: 'NSW'
-    },
-  },
-  {
-    id: 3,
-    name: 'Blacktown',
-    address: {
-      street: 'No 24, brown Street',
-      suburb: 'Blacktown',
-      postcode: '2000',
-      state: 'NSW'
-    },
-  }
-];
+const defaultState = mock.stations;
 
 const stations = (state = defaultState, { type, payload }) => {
   switch (type) {
@@ -55,6 +25,8 @@ const stations = (state = defaultState, { type, payload }) => {
       return state;
 
     case constants.STATION_SAVED:
+      payload[0].id = state.reduce((t, i) => Math.max(t, i.id), - 1) + 1; // increment sequential id
+
       state = [
         ...state,
         ...payload
