@@ -1,12 +1,9 @@
 import * as constants from '../reducers/constants';
-import 'whatwg-fetch';
+import 'isomorphic-fetch';
+import { polyfill } from 'es6-promise';
 
 export const getStations = () => (
-  (dispatch) => {
-    dispatch({
-      type: constants.STATIONS_CLEAR
-    });
-
+  dispatch => {
     fetch('https://private-c1cb6-stationmanager.apiary-mock.com/stations', {
       method: 'GET',
       headers: {
@@ -15,6 +12,10 @@ export const getStations = () => (
       }
     })
     .then((res) => {
+      if (res.status >= 400) {
+        throw new Error('Bad response from server');
+      }
+
       return res.json();
     })
     .then((data) => {
@@ -30,7 +31,7 @@ export const getStations = () => (
 );
 
 export const updateStation = (formData) => (
-  (dispatch) => {
+  dispatch => {
     fetch('https://private-c1cb6-stationmanager.apiary-mock.com/stations', {
       method: 'POST',
       headers: {
@@ -42,6 +43,10 @@ export const updateStation = (formData) => (
       }
     })
     .then((res) => {
+      if (res.status >= 400) {
+        throw new Error('Bad response from server');
+      }
+
       return res.json();
     })
     .then((data) => {
@@ -66,7 +71,7 @@ export const updateStation = (formData) => (
 );
 
 export const saveStation = (formData) => (
-  (dispatch) => {
+  dispatch => {
     fetch('https://private-c1cb6-stationmanager.apiary-mock.com/stations', {
       method: 'POST',
       headers: {
@@ -78,6 +83,10 @@ export const saveStation = (formData) => (
       }
     })
     .then((res) => {
+      if (res.status >= 400) {
+        throw new Error('Bad response from server');
+      }
+
       return res.json();
     })
     .then((data) => {

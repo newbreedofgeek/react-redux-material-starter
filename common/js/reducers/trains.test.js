@@ -1,64 +1,11 @@
 import reducer from './trains';
 import * as constants from './constants';
+import * as mock from '../mock';
 import { expect } from 'chai';
 
 describe('trains reducer', () => {
-  let defaultState = [
-    {
-      id: 1,
-      stationId: 1,
-      name: 'CitiRail 200',
-      role: 'Express',
-      color: 'blue',
-      speed: '50 km/h',
-      seats: 200
-    },
-    {
-      id: 2,
-      stationId: 1,
-      name: 'CitiRail 300',
-      role: 'Limited Stops',
-      color: 'blue',
-      speed: '50 km/h',
-      seats: 200
-    },
-    {
-      id: 3,
-      stationId: 2,
-      name: 'CitiRail 400',
-      role: 'Regular',
-      color: 'blue',
-      speed: '50 km/h',
-      seats: 200
-    },
-    {
-      id: 4,
-      stationId: 2,
-      name: 'CitiRail 500',
-      role: 'Limited Stops',
-      color: 'blue',
-      speed: '50 km/h',
-      seats: 200
-    },
-    {
-      id: 5,
-      stationId: 3,
-      name: 'CitiRail 600',
-      role: 'Express',
-      color: 'blue',
-      speed: '50 km/h',
-      seats: 200
-    },
-    {
-      id: 6,
-      stationId: 3,
-      name: 'CitiRail 700',
-      role: 'Limited Stops',
-      color: 'blue',
-      speed: '50 km/h',
-      seats: 200
-    }
-  ];
+  const defaultState = [];
+  const mockedTrains = mock.trains;
 
   beforeEach(() => {});
 
@@ -79,41 +26,7 @@ describe('trains reducer', () => {
         }
       )
     )
-    .to.deep.equal(defaultState);
-
-    // 1 new item
-    expect(
-      reducer(defaultState,
-        {
-          type: constants.TRAINS_GET,
-          payload: [
-            {
-              id: 7,
-              stationId: 2,
-              name: 'CitiRail 900',
-              role: 'Limited Stops',
-              color: 'red',
-              speed: '500 km/h',
-              seats: 230
-            }
-          ]
-        }
-      )
-    )
-    .to.deep.equal(
-      [
-        ...defaultState,
-        {
-          id: 7,
-          stationId: 2,
-          name: 'CitiRail 900',
-          role: 'Limited Stops',
-          color: 'red',
-          speed: '500 km/h',
-          seats: 230
-        }
-      ]
-    );
+    .to.deep.equal(mockedTrains);
   });
 
   it('should handle TRAIN_UPDATE', () => {

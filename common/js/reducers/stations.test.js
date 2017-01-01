@@ -4,7 +4,8 @@ import * as mock from '../mock';
 import { expect } from 'chai';
 
 describe('stations reducer', () => {
-  let defaultState = mock.stations;
+  const defaultState = [];
+  const mockedStations = mock.stations;
 
   beforeEach(() => {});
 
@@ -25,43 +26,7 @@ describe('stations reducer', () => {
         }
       )
     )
-    .to.deep.equal(defaultState);
-
-    // 1 new item
-    expect(
-      reducer(defaultState,
-        {
-          type: constants.STATIONS_GET,
-          payload: [
-            {
-              id: 4,
-              name: 'Q Hill',
-              address: {
-                street: 'No 24, Hill Street',
-                suburb: 'Q Hill',
-                postcode: '2134',
-                state: 'NSW'
-              }
-            }
-          ]
-        }
-      )
-    )
-    .to.deep.equal(
-      [
-        ...defaultState,
-        {
-          id: 4,
-          name: 'Q Hill',
-          address: {
-            street: 'No 24, Hill Street',
-            suburb: 'Q Hill',
-            postcode: '2134',
-            state: 'NSW'
-          }
-        }
-      ]
-    );
+    .to.deep.equal(mockedStations);
   });
 
   it('should handle STATION_UPDATE', () => {

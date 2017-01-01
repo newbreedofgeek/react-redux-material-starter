@@ -11,7 +11,7 @@ import { routerMiddleware } from 'react-router-redux';
  * by their property name of the piece of state you want to persist, e.g:
  * const persistedStates = ['session', 'order'];
  */
-const persistedStates = ['user'];
+const persistedStates = ['user', 'stations', 'trains'];
 
 export default function configureStore(history, initialState, localStorage = true) {
   /* Middleware

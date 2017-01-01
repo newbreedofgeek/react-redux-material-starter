@@ -1,8 +1,9 @@
 import * as constants from '../reducers/constants';
-import 'whatwg-fetch';
+import 'isomorphic-fetch';
+import { polyfill } from 'es6-promise';
 
 export const login = (formData) => (
-  (dispatch) => {
+  dispatch => {
     fetch('https://private-c1cb6-stationmanager.apiary-mock.com/auth', {
       method: 'POST',
       headers: {
@@ -39,7 +40,7 @@ export const login = (formData) => (
 );
 
 export const logout = () => (
-  (dispatch) => {
+  dispatch => {
     fetch('https://private-c1cb6-stationmanager.apiary-mock.com/auth', {
       method: 'POST',
       headers: {

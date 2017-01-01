@@ -10,3 +10,4 @@ export const TRAINS_GET = 'TRAINS_GET';
 export const TRAINS_CLEAR = 'TRAINS_CLEAR';
 export const TRAIN_UPDATE = 'TRAIN_UPDATE';
 export const TRAIN_SAVED = 'TRAIN_SAVED';
+export const STATIONS_TEST = 'STATIONS_TEST';
