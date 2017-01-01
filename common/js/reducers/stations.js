@@ -6,7 +6,7 @@ const mockedStations = mock.stations;
 
 const stations = (state = defaultState, { type, payload }) => {
   switch (type) {
-    case constants.FETCH_STATIONS_SUCCESS:
+    case constants.FETCH_STATIONS_SUCCESS: {
       // below logic is just to accomodate the static mock api data we get (so UI looks like its updating)
       if (state.length == 0) {
         return [
@@ -16,19 +16,22 @@ const stations = (state = defaultState, { type, payload }) => {
       else {
         return state;
       }
+    }
 
-    case constants.UPDATE_STATION_SUCCESS:
+    case constants.UPDATE_STATION_SUCCESS: {
       state = [
         ...state.filter((i) => (i.id != payload[0].id)), // payload has an array of the item that updated, use that to remove it from state without mutating
         ...payload
       ];
 
       return state;
+    }
 
-    case constants.CLEAR_STATIONS:
+    case constants.CLEAR_STATIONS: {
       return defaultState;
+    }
 
-    case constants.SAVE_STATION_SUCCESS:
+    case constants.SAVE_STATION_SUCCESS: {
       const payloadWithId = [{...payload[0]}];
       payloadWithId.id = state.reduce((t, i) => Math.max(t, i.id), - 1) + 1; // increment sequential id
 
@@ -38,9 +41,11 @@ const stations = (state = defaultState, { type, payload }) => {
       ];
 
       return state;
+    }
 
-    default:
+    default: {
       return state;
+    }
   }
 };
 

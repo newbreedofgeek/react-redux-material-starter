@@ -4,20 +4,24 @@ const defaultState = {};
 
 const user = (state = defaultState, { type, payload }) => {
   switch (type) {
-    case constants.USER_LOGIN_SUCCESS:
+    case constants.USER_LOGIN_SUCCESS: {
       return {
         ...payload,
         ...state
       };
+    }
 
-    case constants.USER_LOGIN_ERROR:
+    case constants.USER_LOGIN_ERROR: {
       return defaultState;
+    }
 
-    case constants.USER_LOGOUT_SUCCESS:
+    case constants.USER_LOGOUT_SUCCESS: {
       return defaultState;
+    }
 
-    default:
+    default: {
       return state;
+    }
   }
 };
 
