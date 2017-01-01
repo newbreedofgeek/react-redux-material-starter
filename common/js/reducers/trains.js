@@ -6,7 +6,7 @@ const mockedTrains = mock.trains;
 
 const trains = (state = defaultState, { type, payload }) => {
   switch (type) {
-    case constants.TRAINS_GET:
+    case constants.FETCH_TRAINS_SUCCESS:
       // below logic is just to accomodate the static mock api data we get (so UI looks like its updating)
       if (state.length == 0) {
         return [
@@ -17,7 +17,7 @@ const trains = (state = defaultState, { type, payload }) => {
         return state;
       }
 
-    case constants.TRAIN_UPDATE:
+    case constants.UPDATE_TRAIN_SUCCESS:
       state = [
         ...state.filter((i) => (i.id != payload[0].id)), // payload has an array of the item that updated, use that to remove it from state without mutating
         ...payload
@@ -25,10 +25,10 @@ const trains = (state = defaultState, { type, payload }) => {
 
       return state;
 
-    case constants.TRAINS_CLEAR:
+    case constants.CLEAR_TRAINS:
       return defaultState;
 
-    case constants.TRAIN_SAVED:
+    case constants.SAVE_TRAIN_SUCCESS:
       payload[0].id = state.reduce((t, i) => Math.max(t, i.id), - 1) + 1; // increment sequential id
 
       state = [

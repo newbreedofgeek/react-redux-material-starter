@@ -4,7 +4,7 @@ import { polyfill } from 'es6-promise';
 
 export const login = (formData) => (
   dispatch => {
-    fetch('https://private-c1cb6-stationmanager.apiary-mock.com/auth', {
+    return fetch('https://private-c1cb6-stationmanager.apiary-mock.com/auth', {
       method: 'POST',
       headers: {
         'cache-control': 'no-cache',
@@ -21,7 +21,7 @@ export const login = (formData) => (
     .then((data) => {
       if (data.token) {
         dispatch({
-            type: constants.USER_LOGGED_IN,
+            type: constants.USER_LOGIN_SUCCESS,
             payload: {
               ...formData,
               ...data
@@ -31,7 +31,7 @@ export const login = (formData) => (
       }
       else {
         dispatch({
-            type: constants.USER_LOG_IN_ERROR
+            type: constants.USER_LOGIN_ERROR
           }
         );
       }
@@ -41,7 +41,7 @@ export const login = (formData) => (
 
 export const logout = () => (
   dispatch => {
-    fetch('https://private-c1cb6-stationmanager.apiary-mock.com/auth', {
+    return fetch('https://private-c1cb6-stationmanager.apiary-mock.com/auth', {
       method: 'POST',
       headers: {
         'cache-control': 'no-cache',
@@ -56,7 +56,7 @@ export const logout = () => (
     })
     .then((data) => {
       dispatch({
-          type: constants.USER_LOGGED_OUT
+          type: constants.USER_LOGOUT_SUCCESS
         }
       );
     });

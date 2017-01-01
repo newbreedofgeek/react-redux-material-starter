@@ -4,7 +4,7 @@ import { polyfill } from 'es6-promise';
 
 export const getStations = () => (
   dispatch => {
-    fetch('https://private-c1cb6-stationmanager.apiary-mock.com/stations', {
+    return fetch('https://private-c1cb6-stationmanager.apiary-mock.com/stations', {
       method: 'GET',
       headers: {
         'cache-control': 'no-cache',
@@ -23,7 +23,7 @@ export const getStations = () => (
       data = [];
 
       dispatch({
-        type: constants.STATIONS_GET,
+        type: constants.FETCH_STATIONS_SUCCESS,
         payload: data
       });
     });
@@ -32,7 +32,7 @@ export const getStations = () => (
 
 export const updateStation = (formData) => (
   dispatch => {
-    fetch('https://private-c1cb6-stationmanager.apiary-mock.com/stations', {
+    return fetch('https://private-c1cb6-stationmanager.apiary-mock.com/stations', {
       method: 'POST',
       headers: {
         'cache-control': 'no-cache',
@@ -63,7 +63,7 @@ export const updateStation = (formData) => (
       }];
 
       dispatch({
-        type: constants.STATION_UPDATE,
+        type: constants.UPDATE_STATION_SUCCESS,
         payload: data
       });
     });
@@ -72,7 +72,7 @@ export const updateStation = (formData) => (
 
 export const saveStation = (formData) => (
   dispatch => {
-    fetch('https://private-c1cb6-stationmanager.apiary-mock.com/stations', {
+    return fetch('https://private-c1cb6-stationmanager.apiary-mock.com/stations', {
       method: 'POST',
       headers: {
         'cache-control': 'no-cache',
@@ -102,7 +102,7 @@ export const saveStation = (formData) => (
       }];
 
       dispatch({
-        type: constants.STATION_SAVED,
+        type: constants.SAVE_STATION_SUCCESS,
         payload: data
       });
     });

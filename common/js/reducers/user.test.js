@@ -12,11 +12,11 @@ describe('user reducer', () => {
     );
   });
 
-  it('should handle USER_LOGGED_IN', () => {
+  it('should handle USER_LOGIN_SUCCESS', () => {
     expect(
       reducer({},
         {
-          type: constants.USER_LOGGED_IN,
+          type: constants.USER_LOGIN_SUCCESS,
           payload: {
             username: 'test',
             password: 'test',
@@ -36,11 +36,11 @@ describe('user reducer', () => {
     );
   });
 
-  it('should handle USER_LOG_IN_ERROR', () => {
+  it('should handle USER_LOGIN_ERROR', () => {
     expect(
       reducer({},
         {
-          type: constants.USER_LOG_IN_ERROR
+          type: constants.USER_LOGIN_ERROR
         }
       )
     )
@@ -49,7 +49,7 @@ describe('user reducer', () => {
     );
   });
 
-  it('should handle USER_LOGGED_OUT', () => {
+  it('should handle USER_LOGOUT_SUCCESS', () => {
     expect(
       reducer(
         {
@@ -59,7 +59,7 @@ describe('user reducer', () => {
           token: '12345'
         },
         {
-          type: constants.USER_LOGGED_OUT
+          type: constants.USER_LOGOUT_SUCCESS
         }
       )
     )

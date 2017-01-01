@@ -16,12 +16,12 @@ describe('stations reducer', () => {
     .to.deep.equal(defaultState);
   });
 
-  it('should handle STATIONS_GET', () => {
+  it('should handle FETCH_STATIONS_SUCCESS', () => {
     // no new items
     expect(
       reducer(defaultState,
         {
-          type: constants.STATIONS_GET,
+          type: constants.FETCH_STATIONS_SUCCESS,
           payload: []
         }
       )
@@ -29,11 +29,11 @@ describe('stations reducer', () => {
     .to.deep.equal(mockedStations);
   });
 
-  it('should handle STATION_UPDATE', () => {
+  it('should handle UPDATE_STATION_SUCCESS', () => {
     expect(
       reducer(defaultState,
         {
-          type: constants.STATION_UPDATE,
+          type: constants.UPDATE_STATION_SUCCESS,
           payload: [
             {
               id: 2,
@@ -66,22 +66,22 @@ describe('stations reducer', () => {
     );
   });
 
-  it('should handle STATIONS_CLEAR', () => {
+  it('should handle CLEAR_STATIONS', () => {
     expect(
       reducer(defaultState,
         {
-          type: constants.STATIONS_CLEAR
+          type: constants.CLEAR_STATIONS
         }
       )
     )
     .to.deep.equal(defaultState);
   });
 
-  it('should handle STATION_SAVED', () => {
+  it('should handle SAVE_STATION_SUCCESS', () => {
     expect(
       reducer(defaultState,
         {
-          type: constants.STATION_SAVED,
+          type: constants.SAVE_STATION_SUCCESS,
           payload: [
             {
               id: defaultState.reduce((total, num) => Math.max(total, num.id), - 1) + 1,

@@ -16,12 +16,12 @@ describe('trains reducer', () => {
     .to.deep.equal(defaultState);
   });
 
-  it('should handle TRAINS_GET', () => {
+  it('should handle FETCH_TRAINS_SUCCESS', () => {
     // no new items
     expect(
       reducer(defaultState,
         {
-          type: constants.TRAINS_GET,
+          type: constants.FETCH_TRAINS_SUCCESS,
           payload: []
         }
       )
@@ -29,11 +29,11 @@ describe('trains reducer', () => {
     .to.deep.equal(mockedTrains);
   });
 
-  it('should handle TRAIN_UPDATE', () => {
+  it('should handle UPDATE_TRAIN_SUCCESS', () => {
     expect(
       reducer(defaultState,
         {
-          type: constants.TRAIN_UPDATE,
+          type: constants.UPDATE_TRAIN_SUCCESS,
           payload: [
             {
               id: 2,
@@ -64,22 +64,22 @@ describe('trains reducer', () => {
     );
   });
 
-  it('should handle TRAINS_CLEAR', () => {
+  it('should handle CLEAR_TRAINS', () => {
     expect(
       reducer(defaultState,
         {
-          type: constants.TRAINS_CLEAR
+          type: constants.CLEAR_TRAINS
         }
       )
     )
     .to.deep.equal(defaultState);
   });
 
-  it('should handle TRAIN_SAVED', () => {
+  it('should handle SAVE_TRAIN_SUCCESS', () => {
     expect(
       reducer(defaultState,
         {
-          type: constants.TRAIN_SAVED,
+          type: constants.SAVE_TRAIN_SUCCESS,
           payload: [
             {
               id: defaultState.reduce((total, num) => Math.max(total, num.id), - 1) + 1,
