@@ -29,11 +29,12 @@ const stations = (state = defaultState, { type, payload }) => {
       return defaultState;
 
     case constants.SAVE_STATION_SUCCESS:
-      payload[0].id = state.reduce((t, i) => Math.max(t, i.id), - 1) + 1; // increment sequential id
+      const payloadWithId = [{...payload[0]}];
+      payloadWithId.id = state.reduce((t, i) => Math.max(t, i.id), - 1) + 1; // increment sequential id
 
       state = [
         ...state,
-        ...payload
+        ...payloadWithId
       ];
 
       return state;

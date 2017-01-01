@@ -2,6 +2,7 @@ import reducer from './stations';
 import * as constants from './constants';
 import * as mock from '../mock';
 import { expect } from 'chai';
+import deepFreeze from 'deep-freeze';
 
 describe('stations reducer', () => {
   const defaultState = [];
@@ -30,40 +31,53 @@ describe('stations reducer', () => {
   });
 
   it('should handle UPDATE_STATION_SUCCESS', () => {
-    expect(
-      reducer(defaultState,
-        {
-          type: constants.UPDATE_STATION_SUCCESS,
-          payload: [
-            {
-              id: 2,
-              name: 'Seven Hills',
-              address: {
-                street: 'No 4, blue Street',
-                suburb: 'Seven Hills',
-                postcode: '4000', // changed to 4000 from 2000
-                state: 'NSW'
-              },
-            }
-          ]
+    const stateBefore = [
+      {
+        id: 2,
+        name: 'Seven Hills',
+        address: {
+          street: 'No 4, blue Street',
+          suburb: 'Seven Hills',
+          postcode: '2000',
+          state: 'NSW'
         }
-      )
-    )
-    .to.deep.equal(
-      [
-        ...defaultState.filter((i) => (i.id != 2)),
+      }
+    ];
+
+    const action = {
+      type: constants.UPDATE_STATION_SUCCESS,
+      payload: [
         {
           id: 2,
           name: 'Seven Hills',
           address: {
             street: 'No 4, blue Street',
             suburb: 'Seven Hills',
-            postcode: '4000',
+            postcode: '4000', // changed to 4000 from 2000
             state: 'NSW'
-          }
+          },
         }
       ]
-    );
+    };
+
+    const stateAfter = [
+      {
+        id: 2,
+        name: 'Seven Hills',
+        address: {
+          street: 'No 4, blue Street',
+          suburb: 'Seven Hills',
+          postcode: '4000',
+          state: 'NSW'
+        }
+      }
+    ];
+
+    deepFreeze(stateBefore);
+    deepFreeze(action);
+
+    expect(reducer(stateBefore, action))
+      .to.deep.equal(stateAfter);
   });
 
   it('should handle CLEAR_STATIONS', () => {
@@ -78,30 +92,12 @@ describe('stations reducer', () => {
   });
 
   it('should handle SAVE_STATION_SUCCESS', () => {
-    expect(
-      reducer(defaultState,
+    const stateBefore = [];
+    const action = {
+      type: constants.SAVE_STATION_SUCCESS,
+      payload: [
         {
-          type: constants.SAVE_STATION_SUCCESS,
-          payload: [
-            {
-              id: defaultState.reduce((total, num) => Math.max(total, num.id), - 1) + 1,
-              name: 'Bloogtown',
-              address: {
-                street: 'No 4, blue Street',
-                suburb: 'Seven Hills',
-                postcode: '4000',
-                state: 'NSW'
-              }
-            }
-          ]
-        }
-      )
-    )
-    .to.deep.equal(
-      [
-        ...defaultState,
-        {
-          id: defaultState.reduce((total, num) => Math.max(total, num.id), - 1) + 1,
+          id: 3,
           name: 'Bloogtown',
           address: {
             street: 'No 4, blue Street',
@@ -109,8 +105,26 @@ describe('stations reducer', () => {
             postcode: '4000',
             state: 'NSW'
           }
-        },
+        }
       ]
-    );
+    };
+    const stateAfter = [
+      {
+        id: 3,
+        name: 'Bloogtown',
+        address: {
+          street: 'No 4, blue Street',
+          suburb: 'Seven Hills',
+          postcode: '4000',
+          state: 'NSW'
+        }
+      },
+    ];
+
+    deepFreeze(stateBefore);
+    deepFreeze(action);
+
+    expect(reducer(stateBefore, action))
+      .to.deep.equal(stateAfter);
   });
 });
