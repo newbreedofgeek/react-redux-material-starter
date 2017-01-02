@@ -103,6 +103,17 @@ To run all tests in `watch` mode:
 yarn test:all:watch
 ```
 
+## Code Test Coverage
+Code test coverage is done via istanbul via nyc:
+
+```
+yarn test:coverage
+```
+
+Full coverage report is given (shown in terminal and as lcov report in coverage directory)
+
+All code is run against coverage, not just the unit tested modules
+
 ## Running ESLint
 
 ```
