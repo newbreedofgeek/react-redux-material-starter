@@ -2,7 +2,7 @@ import reducer from './user';
 import * as constants from './constants';
 import { expect } from 'chai';
 
-describe('user reducer', () => {
+describe('redux: user reducer', () => {
   it('should return the inital state', () => {
     expect(
       reducer(undefined, {})

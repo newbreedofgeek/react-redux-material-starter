@@ -4,7 +4,7 @@ import * as mock from '../mock';
 import { expect } from 'chai';
 import deepFreeze from 'deep-freeze';
 
-describe('stations reducer', () => {
+describe('redux: stations reducer', () => {
   const defaultState = [];
   const mockedStations = mock.stations;
 

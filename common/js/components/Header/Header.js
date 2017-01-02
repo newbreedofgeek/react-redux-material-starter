@@ -30,14 +30,13 @@ export default class Header extends Component {
 
   render() {
     return (
-      <div className="nav">
+      <div className="nav header">
         <AppBar title="Station Manager" onLeftIconButtonTouchTap={this.handleToggle}  />
 
         <Drawer
           docked={false}
           open={this.state.open}
-          onRequestChange={(open) => this.setState({open})}
-          >
+          onRequestChange={(open) => this.setState({open})}>
           <h1 className={ css.title }>Menu</h1>
           <MenuItem onTouchTap={this.handleClose} primaryText="Home" containerElement={<Link to="/" />} className = { css.menuHolder } />
           <MenuItem onTouchTap={this.handleClose} primaryText="Stations" containerElement={<Link to="/stations" />} />

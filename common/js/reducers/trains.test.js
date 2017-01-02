@@ -3,7 +3,7 @@ import * as constants from './constants';
 import * as mock from '../mock';
 import { expect } from 'chai';
 
-describe('trains reducer', () => {
+describe('redux: trains reducer', () => {
   const defaultState = [];
   const mockedTrains = mock.trains;
 

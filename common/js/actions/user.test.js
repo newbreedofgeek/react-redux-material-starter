@@ -8,7 +8,7 @@ import * as actions from './user';
 const middleware = [ thunk ];
 const mockStore = configureMockStore(middleware);
 
-describe('user (auth) aync actions', () => {
+describe('redux: user (auth) aync actions', () => {
   afterEach(() => {
     nock.cleanAll()
   })

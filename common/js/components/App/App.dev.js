@@ -21,17 +21,16 @@ export default class App extends React.Component {
       <MuiThemeProvider>
         <div className={css.app}>
           <Header {...this.props} />
-            <div className={css.rootAnimate}>
-              <CSSTransitionGroup
-                transitionName="animate"
-                transitionEnterTimeout={1000}
-                transitionLeaveTimeout={1000}>
-                  {React.cloneElement(this.props.children, {
-                    key: key
-                  })}
-                </CSSTransitionGroup>
-            </div>
-
+          <div className={css.rootAnimate}>
+            <CSSTransitionGroup
+              transitionName="animate"
+              transitionEnterTimeout={1000}
+              transitionLeaveTimeout={1000}>
+                {React.cloneElement(this.props.children, {
+                  key: key
+                })}
+              </CSSTransitionGroup>
+          </div>
           <Footer {...this.props} />
         </div>
       </MuiThemeProvider>
