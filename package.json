@@ -22,7 +22,7 @@
     "dev:build": "NODE_ENV=development $(yarn bin)/babel-node $(yarn bin)/webpack --progress --colors --display-error-details --config webpack/development.js",
     "prod:build": "NODE_ENV=production $(yarn bin)/babel-node $(yarn bin)/webpack --pepper --optimize-dedupe --config webpack/production.js",
     "prod:start": "NODE_ENV=production pm2 start server --name='callai'",
-    "test": "npm run test:all",
+    "test": "./node_modules/.bin/mocha --recursive --compilers js:babel-core/register --require ignore-styles",
     "test:all": "./node_modules/.bin/mocha --recursive --compilers js:babel-core/register --require ignore-styles $(find . -path ./node_modules -prune -o -name '*.test.js' -print)",
     "test:coverage": "./node_modules/.bin/nyc --all --reporter=lcov --reporter=text npm run test:all",
     "test:all:watch": "./node_modules/.bin/mocha --recursive --compilers js:babel-core/register --require ignore-styles $(find . -path ./node_modules -prune -o -name '*.test.js' -print) --watch",
