@@ -1,6 +1,6 @@
 /* The webpack dev server's port to use
  */
-export const DEV_SERVER_PORT = process.env.DEV_SERVER_PORT || 3001;
+export const DEV_SERVER_PORT = process.env.DEV_SERVER_PORT || 4000;
 
 /* The hostname to use for the webpack dev server
  */
