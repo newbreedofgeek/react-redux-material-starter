@@ -1,7 +1,7 @@
 {
   "name": "react-redux-material-starter",
   "description": "A starter kit for isomorphic web development using React, Redux and Material UI.",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "license": "MIT",
   "main": "client/index.js",
   "config": {

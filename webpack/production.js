@@ -2,9 +2,12 @@ import webpack from 'webpack';
 import baseConfig from './base';
 import CompressionPlugin from 'compression-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import packageJson from '../package.json';
 
 const plugins = [
-  new ExtractTextPlugin('[name].[hash].css'),
+  // ideally this should be how we do it, but how can we get the server.js to use this name in production??
+  // new ExtractTextPlugin('[name].[hash].css'),
+  new ExtractTextPlugin('styles.css'),
   new webpack.optimize.DedupePlugin(),
   new webpack.optimize.AggressiveMergingPlugin(),
   new webpack.optimize.UglifyJsPlugin({
@@ -22,20 +25,29 @@ const plugins = [
   })
 ];
 
-const loaders = [{
-  test: /\.scss$/,
-  loader: ExtractTextPlugin.extract('css!sass')
-}, {
-  test: /\.js$/,
-  loaders: ['babel'],
-  exclude: /node_modules/
-}];
+const loaders = [
+  {
+    test: /\.scss$/,
+    loader: ExtractTextPlugin.extract(
+      'style',
+      `css?minimize&modules&importLoaders=1&localIdentName=${packageJson.config.css}` +
+      '!postcss' +
+      '!sass'
+    )
+  },
+  {
+    test: /\.js$/,
+    loaders: ['babel'],
+    exclude: /node_modules/
+  }
+];
 
 export default {
   ...baseConfig,
-  output: Object.assign({}, baseConfig.output, {
-    filename: '[name].[hash].js'
-  }),
+  // ideally this should be how we do it, but how can we get the server.js to use this name in production??
+  // output: Object.assign({}, baseConfig.output, {
+  //   filename: '[name].[hash].js'
+  // }),
   plugins: [
     ...baseConfig.plugins,
     ...plugins

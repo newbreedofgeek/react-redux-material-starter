@@ -121,3 +121,24 @@ yarn lint
 ```
 
 Check the `.eslintignore` file for directories excluded from linting.
+
+## Build for Production and Run it using Express
+You can build and serve this as a universal react app via the built in express server. To do that do the following.
+
+```
+// to build with production setting (make sure you export correct production ENV vars)
+yarn prod:build
+
+// you need pm2 installed. This will serve your dist build
+yarn prod:start
+
+// to stop the pm2 served app
+pm2 stop callai
+```
+
+There are some shell scripts in `bin` that can be used to test your environment builds using custom settings. For e.g. to export custom env vars do this `. bin/production.sh` before building and starting. If you want to update env vars after it has been started, you can pm2 restart like so `pm2 restart callai --update-env` for those changes to take effect.
+
+After testing your production build, make sure you run `. bin/development.sh` if you want to go back to development mode.
+
+## Dev Tips
+- debugger is turned off by default, use `debugger;  // eslint-disable-line` to force debugging although this is not recommended

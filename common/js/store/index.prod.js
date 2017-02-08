@@ -18,7 +18,7 @@ export default function configureStore(history, initialState, localStorage = tru
    * applied if an `options.history` object was passed to configureStore.
    */
   const routingMiddleware = routerMiddleware(history);
-  let middleware = [thunk];
+  let middleware = [thunk, routingMiddleware];
 
   // Add universal enhancers here
   let enhancers = [];
