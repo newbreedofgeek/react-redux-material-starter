@@ -141,4 +141,4 @@ There are some shell scripts in `bin` that can be used to test your environment 
 After testing your production build, make sure you run `. bin/development.sh` if you want to go back to development mode.
 
 ## Dev Tips
-- debugger is turned off by default, use `debugger;  // eslint-disable-line` to force debugging although this is not recommended
+- debugger is turned off by default, use `debugger;  // eslint-disable-line` to force debugging although this is not recommended, find a better way to do this.
