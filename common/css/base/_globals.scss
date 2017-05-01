@@ -3,6 +3,11 @@ html, body {
   height: 100%;
 }
 
+/* core */
+html {
+  font-size: 62.5%; /* =10px (https://www.sitepoint.com/understanding-and-using-rem-units-in-css/) */
+}
+
 body {
   font-family: 'Roboto', Helvetica, Arial, sans-serif;
   padding: 0;
