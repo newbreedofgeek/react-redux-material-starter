@@ -14,3 +14,28 @@ body {
   margin: 0;
   overflow-x: hidden; /* our primary tranitions cause the X scrolls to appear, this kills it */
 }
+
+
+h1 {
+  font-size: 2.2rem;
+  color: $dark-grey;
+}
+
+h2 {
+  font-size: 1.8rem;
+  color: $dark-grey;
+  opacity: .8;
+}
+
+:global .fullWidth {
+  width: 100% !important;
+}
+
+:global .halfWidth {
+  width: 50% !important;
+}
+
+:global .inlineGap {
+  display: inline-block;
+  width: 10px;
+}
